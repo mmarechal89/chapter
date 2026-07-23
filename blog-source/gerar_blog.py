@@ -87,7 +87,7 @@ def render_header(depth_prefix=""):
   <div class="wrap">
     <div class="blog-hero-grid">
       <a href="{depth_prefix}../index.html" class="wordmark">chapter<span class="dot">.</span></a>
-      <div class="blog-hero-tag">Uma narrativa,<br>múltiplos canais.<br><strong>Do humano às LLMs.</strong></div>
+      <div class="blog-hero-tag">Uma narrativa,<br>múltiplos canais.<br>Do humano às LLMs.</div>
     </div>
   </div>
 </header>"""
@@ -131,6 +131,7 @@ def render_index(posts):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Hanken+Grotesk:wght@800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -169,6 +170,7 @@ def render_post(p):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Hanken+Grotesk:wght@800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
