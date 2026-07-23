@@ -62,17 +62,21 @@ def carregar_posts():
     posts = []
     for md_file in sorted(POSTS_DIR.glob("*.md")):
         post = frontmatter.load(md_file)
+        # normaliza as chaves do frontmatter pra minúsculo, assim "Image", "IMAGE"
+        # e "image" funcionam do mesmo jeito, sem depender de grafia exata.
+        meta = {k.lower(): v for k, v in post.metadata.items()}
+
         slug = md_file.stem
-        data = post.get("date")
+        data = meta.get("date")
         if isinstance(data, str):
             data = datetime.strptime(data, "%Y-%m-%d").date()
         posts.append({
             "slug": slug,
-            "title": post.get("title", slug),
-            "eyebrow": post.get("eyebrow", "Notas da Chapter"),
-            "excerpt": post.get("excerpt", ""),
-            "image": post.get("image", ""),
-            "image_alt": post.get("image_alt", post.get("title", slug)),
+            "title": meta.get("title", slug),
+            "eyebrow": meta.get("eyebrow", "Notas da Chapter"),
+            "excerpt": meta.get("excerpt", ""),
+            "image": meta.get("image", ""),
+            "image_alt": meta.get("image_alt", meta.get("title", slug)),
             "date": data,
             "body_md": post.content,
             "body_html": markdown.markdown(post.content, extensions=["extra"]),

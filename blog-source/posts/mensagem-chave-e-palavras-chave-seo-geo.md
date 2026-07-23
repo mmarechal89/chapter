@@ -3,8 +3,8 @@ title: Por que sua mensagem-chave precisa conversar com as palavras-chave do SEO
 date: 2026-08-07
 eyebrow: SEO e GEO
 excerpt: Marketing pensa em palavra-chave. Comunicação pensa em mensagem-chave. Elas raramente se falam, e essa distância está custando caro num mundo de busca por IA.
-Image: https://plus.unsplash.com/premium_photo-1784395298017-28a8d656df19?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-Image_alt: Imagem de capa do post apresentando uma cena de alta tecnologia e cenário de inovação
+image: https://plus.unsplash.com/premium_photo-1784395298017-28a8d656df19?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image_alt: Imagem de capa do post apresentando uma cena de alta tecnologia e cenário de inovação
 ---
 
 Toda empresa um pouco mais estruturada tem dois documentos que quase nunca se encontram. Um vive no marketing, geralmente numa planilha, e lista as palavras-chave que o time de SEO decidiu perseguir. O outro vive na comunicação, geralmente num documento de posicionamento, e lista as mensagens-chave que a empresa quer transmitir sobre si mesma.

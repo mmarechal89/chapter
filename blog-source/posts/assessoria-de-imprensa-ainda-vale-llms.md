@@ -3,8 +3,8 @@ title: Assessoria de imprensa ainda vale? Por que as LLMs mudaram o jogo
 date: 2026-07-24
 eyebrow: Imprensa e LLMs
 excerpt: A pergunta certa não é se a imprensa ainda importa. É por que ela importa de um jeito diferente do que importava há três anos.
-Image: https://images.unsplash.com/photo-1503694978374-8a2fa686963a?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-Image_alt: Imagem de capa do post apresentando uma cena de alta tecnologia e cenário de inovação
+image: https://images.unsplash.com/photo-1503694978374-8a2fa686963a?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image_alt: Imagem de capa do post apresentando uma cena de alta tecnologia e cenário de inovação
 ---
 
 Recebo essa pergunta com uma frequência que já deixou de ser coincidência. Vem de cliente cortando orçamento, vem de gestor de marketing tentando justificar verba, vem de gente que simplesmente ouviu alguém dizer que release morreu. A pergunta é sempre a mesma, só muda o tom: assessoria de imprensa ainda vale a pena, ou isso é coisa de um mundo que já não existe mais?

@@ -3,8 +3,8 @@ title: Comunicação só vale a pena quando tem intenção. Como está a sua?
 date: 2026-07-31
 eyebrow: Método
 excerpt: Volume de conteúdo e volume de imprensa são fáceis de produzir. Intenção é o que a maioria dos planos de comunicação esquece de definir primeiro.
-Image: https://images.unsplash.com/photo-1760389005000-bf02bf24f463?q=80&w=1423&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-Image_alt: Imagem de capa do post apresentando uma cena de alta tecnologia e cenário de inovação
+image: https://images.unsplash.com/photo-1760389005000-bf02bf24f463?q=80&w=1423&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image_alt: Imagem de capa do post apresentando uma cena de alta tecnologia e cenário de inovação
 ---
 
 Tem uma pergunta que faço em praticamente toda imersão, e que costuma render um silêncio maior do que eu esperava da primeira vez. A pergunta é simples: o que precisa ser verdade daqui a um ano pra essa aposta do negócio dar certo? E, logo em seguida: o que a comunicação está fazendo hoje pra sustentar isso?
