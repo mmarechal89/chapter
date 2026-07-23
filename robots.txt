@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chapter.com.br/sitemap.xml
+Sitemap: https://chaptercom.com.br/sitemap.xml
