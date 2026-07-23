@@ -32,14 +32,19 @@ a{ color:inherit; }
 .wordmark{ font-family:var(--wordmark); font-weight:800; letter-spacing:-0.01em; }
 .wordmark .dot{ color:var(--terracota-bright); }
 
-/* ============ HEADER (shared, dark, compact) ============ */
-header.blog-header{ background:var(--bg-dark); padding:32px 0; }
-header.blog-header .wrap{ display:flex; align-items:center; justify-content:space-between; max-width:760px; }
-header.blog-header .wordmark{ font-size:24px; color:var(--paper); text-decoration:none; }
-header.blog-header nav a{
-  font-size:14px; color:var(--paper-soft); text-decoration:none; font-weight:500;
+/* ============ HEADER (mirrors homepage hero) ============ */
+header.blog-header{ background:var(--bg-dark); padding:56px 0; }
+header.blog-header .wrap{ max-width:760px; }
+.blog-hero-grid{
+  display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px;
 }
-header.blog-header nav a:hover{ color:var(--terracota-bright); }
+header.blog-header .wordmark{
+  font-size:clamp(36px, 7vw, 52px); color:var(--paper); text-decoration:none;
+}
+.blog-hero-tag{
+  font-family:var(--display); font-weight:500; font-size:15px; line-height:1.5;
+  color:var(--paper-soft); text-align:right;
+}
 
 /* ============ BLOG INDEX ============ */
 main.blog-index{ padding:72px 0 96px; }

@@ -85,8 +85,10 @@ def carregar_posts():
 def render_header(depth_prefix=""):
     return f"""<header class="blog-header">
   <div class="wrap">
-    <a href="{depth_prefix}../index.html" class="wordmark">chapter<span class="dot">.</span></a>
-    <nav><a href="{depth_prefix}index.html">Notas</a></nav>
+    <div class="blog-hero-grid">
+      <a href="{depth_prefix}../index.html" class="wordmark">chapter<span class="dot">.</span></a>
+      <div class="blog-hero-tag">Uma narrativa,<br>múltiplos canais.<br>Do humano às LLMs.</div>
+    </div>
   </div>
 </header>"""
 
