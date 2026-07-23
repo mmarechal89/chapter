@@ -51,14 +51,24 @@ main.blog-index{ padding:72px 0 96px; }
 .post-list{ display:flex; flex-direction:column; }
 .post-item{
   padding:28px 0; border-top:1px solid var(--line);
-  display:flex; flex-direction:column; gap:8px;
+  display:flex; gap:24px; align-items:flex-start;
 }
 .post-item:last-child{ border-bottom:1px solid var(--line); }
+.post-thumb{
+  flex-shrink:0; width:180px; height:120px; border-radius:8px; overflow:hidden;
+  background:var(--bg-alt);
+}
+.post-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.post-thumb-empty{
+  display:flex; align-items:center; justify-content:center; background:var(--bg-dark);
+}
+.post-thumb-empty .wordmark{ font-size:28px; color:var(--paper); }
+.post-item-text{ display:flex; flex-direction:column; gap:8px; min-width:0; }
 .post-item .post-date{ font-size:12.5px; color:var(--ink-muted); font-weight:500; letter-spacing:0.02em; text-transform:uppercase; }
 .post-item h2{ font-family:var(--display); font-weight:700; font-size:20px; }
 .post-item h2 a{ text-decoration:none; color:var(--ink); }
 .post-item h2 a:hover{ color:var(--terracota); }
-.post-item .excerpt{ font-size:15px; color:var(--ink-soft); line-height:1.7; max-width:600px; }
+.post-item .excerpt{ font-size:15px; color:var(--ink-soft); line-height:1.7; }
 
 /* ============ POST PAGE (editorial, mirrors narrativa treatment) ============ */
 main.post{ background:var(--bg-alt); padding:88px 0 96px; }
@@ -75,7 +85,9 @@ main.post{ background:var(--bg-alt); padding:88px 0 96px; }
   font-family:var(--display); font-weight:800; font-size:clamp(28px,4.5vw,40px);
   line-height:1.25; letter-spacing:-0.01em; margin-bottom:18px;
 }
-.post .post-meta{ font-size:13.5px; color:var(--ink-muted); margin-bottom:48px; }
+.post .post-meta{ font-size:13.5px; color:var(--ink-muted); margin-bottom:36px; }
+.post .post-hero{ margin-bottom:44px; border-radius:10px; overflow:hidden; aspect-ratio:16/9; }
+.post .post-hero img{ width:100%; height:100%; object-fit:cover; display:block; }
 .post .post-body p{ font-size:18px; line-height:1.9; color:var(--ink); margin-bottom:26px; }
 .post .post-body p:first-of-type::first-letter{
   font-family:var(--display); font-weight:800; font-size:60px; float:left;
@@ -84,6 +96,16 @@ main.post{ background:var(--bg-alt); padding:88px 0 96px; }
 .post .post-body h2{ font-family:var(--display); font-weight:700; font-size:22px; margin:40px 0 16px; }
 .post .post-body strong{ color:var(--ink); font-weight:700; }
 .post .post-body em{ font-style:italic; }
+.post .post-body blockquote{
+  background:var(--bg-dark); color:var(--paper); border-radius:8px;
+  padding:24px 56px 24px 28px; margin:36px 0; border-left:3px solid var(--terracota);
+}
+.post .post-body blockquote p{
+  color:var(--paper); font-size:18px; line-height:1.75; margin-bottom:0;
+}
+.post .post-body blockquote p:first-of-type::first-letter{
+  font-size:18px; font-weight:400; float:none; padding:0; color:inherit;
+}
 
 /* ============ FOOTER ============ */
 footer.blog-footer{ background:var(--bg-dark); padding:32px 0; }
@@ -95,4 +117,7 @@ footer.blog-footer .foot-tag{ font-size:12.5px; color:var(--paper-soft); }
   .wrap{ padding:0 22px; }
   main.blog-index{ padding:48px 0 64px; }
   main.post{ padding:56px 0 64px; }
+  .post-item{ flex-direction:column; gap:14px; }
+  .post-thumb{ width:100%; height:170px; }
+  .post .post-body blockquote{ padding:20px 24px; }
 }

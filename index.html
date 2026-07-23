@@ -1,13 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>  
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>chapter. — consultoria de narrativas, da imprensa às llms</title>
+
+<title>Chapter — Consultoria de Narrativa e Posicionamento em LLMs</title>
+<meta name="description" content="A Chapter lê a narrativa completa da sua empresa e constrói as mensagens e cenários que sustentam sua autoridade de marca — na imprensa, em conteúdo próprio e nas respostas de IAs como ChatGPT e Gemini.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://chaptercom.com.br/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chapter">
+<meta property="og:title" content="Chapter — Consultoria de Narrativa e Posicionamento em LLMs">
+<meta property="og:description" content="Uma narrativa, múltiplos canais. Do humano às LLMs. Diagnóstico e consultoria de narrativa para empresas de tecnologia, cibersegurança e agências.">
+<meta property="og:url" content="https://chaptercom.com.br/">
+<meta property="og:image" content="https://chaptercom.com.br/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chapter — Consultoria de Narrativa e Posicionamento em LLMs">
+<meta name="twitter:description" content="Uma narrativa, múltiplos canais. Do humano às LLMs.">
+<meta name="twitter:image" content="https://chaptercom.com.br/og-image.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Hanken+Grotesk:wght@800&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Chapter",
+  "description": "Consultoria de narrativa e posicionamento em LLMs. Diagnóstico e consultoria contínua para empresas de tecnologia, cibersegurança e agências de publicidade.",
+  "url": "https://chaptercom.com.br/",
+  "email": "ola@chaptercom.com.br",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Brasil"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "São Paulo",
+    "addressRegion": "SP",
+    "addressCountry": "BR"
+  },
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "name": "Diagnóstico de Narrativa",
+      "description": "Imersão completa no negócio e leitura de como a empresa aparece hoje na imprensa, no conteúdo próprio e nas respostas de LLMs."
+    },
+    {
+      "@type": "Offer",
+      "name": "Consultoria de Narrativa",
+      "description": "Execução contínua de imprensa Tier 1, conteúdo, canais próprios e branded content, com checagem trimestral de resultados."
+    }
+  ]
+}
+</script>
 <style>
   :root{
     --slate:#53687C;
@@ -21,7 +78,7 @@
     --ink-soft:#5C6570;
     --ink-muted:#8B9096;
     --paper:#F6F4EE;
-    --paper-soft:#fff;
+    --paper-soft:#B7C0C7;
     --line:#E1DED4;
     --line-dark:rgba(246,244,238,0.14);
     --wordmark: 'Hanken Grotesk', sans-serif;
@@ -56,9 +113,19 @@
   /* ============ WORDMARK (shared) ============ */
   .wordmark{ font-family:var(--wordmark); font-weight:800; letter-spacing:-0.01em; }
   .wordmark .dot{ color:var(--terracota-bright); }
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+  h1.wordmark{ margin:0; }
 
   /* ============ HEADER ============ */
-  header.hero{ background:var(--bg-dark); padding:104px 0 84px; }
+  header.hero{ background:var(--bg-dark); padding:104px 0 84px; position:relative; }
+  .hero-nav{
+    position:absolute; top:36px; right:56px; font-size:14px; color:var(--paper-soft);
+    text-decoration:none; font-weight:500;
+  }
+  .hero-nav:hover{ color:var(--terracota-bright); }
   .hero-grid{
     display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:end;
     padding-bottom:52px; border-bottom:1px solid var(--line-dark);
@@ -140,7 +207,29 @@
   }
   .narrativa .closing .dot{ color:var(--terracota); }
 
-  /* ============ CTA ============ */
+  /* ============ BLOG PREVIEW ============ */
+  section.posts-preview{ padding:88px 0; border-bottom:1px solid var(--line); }
+  .posts-preview-head{
+    display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap;
+    gap:16px; margin-bottom:44px;
+  }
+  .posts-preview-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+  .preview-card{
+    border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    text-decoration:none; color:inherit; display:block;
+    transition:transform 0.2s ease, border-color 0.2s ease;
+  }
+  .preview-card:hover{ transform:translateY(-3px); border-color:var(--terracota); }
+  .preview-thumb{ aspect-ratio:16/9; background:var(--bg-dark); overflow:hidden; }
+  .preview-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .preview-thumb-empty{ display:flex; align-items:center; justify-content:center; }
+  .preview-thumb-empty span{ font-family:var(--wordmark); font-weight:800; font-size:22px; color:var(--paper); }
+  .preview-body{ padding:20px 22px 24px; }
+  .preview-date{ font-size:11.5px; color:var(--ink-muted); font-weight:600; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:8px; }
+  .preview-title{ font-family:var(--display); font-weight:700; font-size:16.5px; line-height:1.4; margin-bottom:8px; }
+  .preview-excerpt{ font-size:13.5px; line-height:1.6; color:var(--ink-soft); }
+  .posts-preview-link{ font-size:14px; font-weight:600; color:var(--terracota); text-decoration:none; }
+  .posts-preview-link:hover{ color:var(--terracota-bright); }
   section.cta{ background:var(--bg-dark); padding:100px 0; }
   .cta-head{
     font-family:var(--display); font-weight:700; font-size:clamp(36px, 5vw, 53px);
@@ -188,6 +277,7 @@
 
   /* ============ RESPONSIVE ============ */
   @media (max-width:860px){
+    .hero-nav{ top:24px; right:24px; font-size:13px; }
     .wrap{ padding:0 28px; }
     header.hero{ padding:64px 0 56px; }
     .hero-grid{ grid-template-columns:1fr; gap:22px; padding-bottom:36px; }
@@ -197,7 +287,8 @@
     .stat-row{ grid-template-columns:1fr; gap:28px; }
     .stat{ padding-left:0; border-left:none; padding-top:20px; border-top:1px solid var(--line); }
     .stat:first-child{ border-top:none; padding-top:0; }
-    section.problema, section.servicos, section.cta{ padding:64px 0; }
+    section.problema, section.servicos, section.cta, section.posts-preview{ padding:64px 0; }
+    .posts-preview-grid{ grid-template-columns:1fr; }
     .chapter-card{ grid-template-columns:1fr; }
     .chapter-side{ padding:20px 26px; }
     section.narrativa{ padding:64px 0 48px; }
@@ -210,10 +301,11 @@
 <body>
 
 <header class="hero">
+  <a href="blog/index.html" class="hero-nav">Notas</a>
   <div class="wrap">
     <div class="hero-grid">
-      <div class="wordmark">chapter<span class="dot">.</span></div>
-      <div class="hero-tag">Uma narrativa,<br>múltiplos canais.<br><strong>Do humano às LLMs.</strong></div>
+      <h1 class="wordmark">chapter<span class="dot">.</span><span class="sr-only"> — Consultoria de narrativa e posicionamento em LLMs</span></h1>
+      <div class="hero-tag">Uma narrativa,<br>múltiplos canais.<br>Do humano às LLMs.</div>
     </div>
   </div>
 </header>
@@ -232,12 +324,11 @@
         <div class="stat-source">Similarweb</div>
       </div>
       <div class="stat reveal">
-        <div class="stat-num" data-final="50">0</div>
-        <div class="stat-label">releases são recebidos por dia, em média, por jornalista. Ou seja, os disparos em massa tornaram-se irrelevantes como fonte de resultados.</div>
-        <div class="stat-source">RUC</div>
+        <div class="stat-num" data-final="35%">0%</div>
+        <div class="stat-label">dos consumidores começam a descoberta de um produto numa IA, não numa busca tradicional.</div>
+        <div class="stat-source">Similarweb</div>
       </div>
     </div>
-    <h2 class="reveal" style="padding-top: 30px; text-align: center; font-size: 2em; font-weight: 400;"><strong>A verdade:</strong> ou a sua história se destaca, ou não sobra ninguém para contá-la.</h2>
   </div>
 </section>
 
@@ -251,7 +342,7 @@
 <section class="servicos">
   <div class="wrap">
     <span class="sec-eyebrow">Como o trabalho acontece</span>
-    <h2 class="sec-title">Dois capítulos, uma narrativa.</h2>
+    <h2 class="sec-title">Três capítulos, um só serviço.</h2>
 
     <div class="chapters">
       <div class="chapter-card ch1 reveal">
@@ -272,7 +363,7 @@
         </div>
         <div class="chapter-body">
           <p class="lead">Recorrência e execução com foco em imprensa Tier 1, AEO e GEO.</p>
-          <p class="desc">Entregável: resultados qualificados que conversam com o planejamento narrativo, pautado por senioridade e Tier 1. Produção de conteúdo e imprensa que também movem ponteiros em LLMs, com monitoramento mensal de posicionamento em cenários pré-definidos. <span class="terms">Recorrente, mensal.</span></p>
+          <p class="desc">Entregável: resultados qualificados que conversam com o planejamento narrativo. Produção de conteúdo e imprensa que movem ponteiros em LLMs, assessoria de imprensa com monitoramento mensal de posicionamento em cenários pré-definidos. <span class="terms">Recorrente, mensal.</span></p>
         </div>
       </div>
     </div>
@@ -285,6 +376,30 @@
     <p>Isso sempre custou caro, mas o custo ficou visível de um jeito novo. Hoje existe um leitor que lê a empresa inteira de uma vez, todo material publicado, toda menção, todo histórico, e devolve isso como resposta a quem pergunta. Esse leitor não perdoa inconsistência, não valoriza volume e não distingue o que foi dito com intenção do que foi publicado por obrigação. Ele simplesmente reflete de volta a soma do que encontrou.</p>
     <p>A Chapter existe pra escrever essa história antes que ela seja lida de forma fragmentada, seja por jornalista, por cliente em fase de decisão ou por uma inteligência artificial resumindo o mercado pra alguém.</p>
     <p class="closing reveal">Um bom trabalho de comunicação não é estar em mais lugares. É garantir que, seja onde for, a narrativa seja a mesma<span class="dot">.</span></p>
+  </div>
+</section>
+
+<section class="posts-preview">
+  <div class="wrap">
+    <div class="posts-preview-head">
+      <div>
+        <span class="sec-eyebrow">Notas da Chapter</span>
+        <h2 class="sec-title" style="margin-bottom:0;">Últimas reflexões sobre narrativa</h2>
+      </div>
+      <a href="blog/index.html" class="posts-preview-link">Ver todas as notas →</a>
+    </div>
+    <div class="posts-preview-grid">
+<!-- BLOG_PREVIEW_START -->
+      <a href="blog/por-que-a-chapter-tem-um-blog.html" class="preview-card">
+        <div class="preview-thumb"><img src="blog/https://images.unsplash.com/photo-1773332611550-9f5a465b4e42?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Por que a Chapter tem um blog" loading="lazy"></div>
+        <div class="preview-body">
+          <div class="preview-date">23 de julho de 2026</div>
+          <div class="preview-title">Por que a Chapter tem um blog</div>
+          <p class="preview-excerpt">Todo post daqui nasce de uma pergunta que já respondi em algum diagnóstico. Este texto explica por que decidi escrever em público.</p>
+        </div>
+      </a>
+<!-- BLOG_PREVIEW_END -->
+    </div>
   </div>
 </section>
 
@@ -318,7 +433,7 @@
         </div>
         <div class="cta-row-2">
           <input type="text" name="empresa" placeholder="Empresa">
-          <input type="tel" name="celular" placeholder="Celular" pattern="[0-9()\-\s+]{8,20}" required>
+          <input type="tel" name="celular" placeholder="Celular" required>
         </div>
         <textarea name="mensagem" placeholder="Como posso ajudar?" required></textarea>
         <button class="cta-btn" type="submit">Enviar mensagem ↗</button>
@@ -331,11 +446,10 @@
 <footer>
   <div class="wrap">
     <div class="footer-wordmark wordmark">chapter<span class="dot">.</span></div>
-    <div class="footer-tag">Uma narrativa, múltiplos canais. <strong>Do humano às LLMs.</strong></div>
+    <div class="footer-tag">Uma narrativa, múltiplos canais. Do humano às LLMs.</div>
   </div>
 </footer>
-<script data-goatcounter="https://chaptercom.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+
 <script>
 (function(){
   var words = ["captar","lançar","crescer","comprar","vender"];

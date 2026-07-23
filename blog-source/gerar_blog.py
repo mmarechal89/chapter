@@ -34,10 +34,14 @@ import markdown
 
 SOURCE_DIR = Path(__file__).parent
 POSTS_DIR = SOURCE_DIR / "posts"
+IMAGES_DIR = SOURCE_DIR / "images"
 STYLE_FILE = SOURCE_DIR / "style.css"
 OUTPUT_DIR = SOURCE_DIR.parent / "blog"  # ../blog relative to blog-source/
 SITE_ROOT = SOURCE_DIR.parent            # pasta onde ficam index.html, robots.txt, sitemap.xml
 BASE_URL = "https://chaptercom.com.br"
+HOME_FILE = SITE_ROOT / "index.html"
+PREVIEW_START = "<!-- BLOG_PREVIEW_START -->"
+PREVIEW_END = "<!-- BLOG_PREVIEW_END -->"
 
 SITE_NAME = "chapter."
 SITE_URL_HOME = "../index.html"   # ajuste se a estrutura de pastas final for diferente
@@ -67,6 +71,8 @@ def carregar_posts():
             "title": post.get("title", slug),
             "eyebrow": post.get("eyebrow", "Notas da Chapter"),
             "excerpt": post.get("excerpt", ""),
+            "image": post.get("image", ""),
+            "image_alt": post.get("image_alt", post.get("title", slug)),
             "date": data,
             "body_md": post.content,
             "body_html": markdown.markdown(post.content, extensions=["extra"]),
@@ -97,10 +103,19 @@ def render_footer():
 def render_index(posts):
     items = []
     for p in posts:
+        img_html = ""
+        if p["image"]:
+            img_html = f'<div class="post-thumb"><img src="{p["image"]}" alt="{p["image_alt"]}" loading="lazy"></div>'
+        else:
+            img_html = '<div class="post-thumb post-thumb-empty"><span class="wordmark">c<span class="dot">.</span></span></div>'
+
         items.append(f"""    <div class="post-item">
-      <div class="post-date">{formatar_data(p['date'])}</div>
-      <h2><a href="{p['slug']}.html">{p['title']}</a></h2>
-      <p class="excerpt">{p['excerpt']}</p>
+      {img_html}
+      <div class="post-item-text">
+        <div class="post-date">{formatar_data(p['date'])}</div>
+        <h2><a href="{p['slug']}.html">{p['title']}</a></h2>
+        <p class="excerpt">{p['excerpt']}</p>
+      </div>
     </div>""")
     items_html = "\n".join(items)
 
@@ -138,6 +153,10 @@ def render_index(posts):
 
 
 def render_post(p):
+    img_html = ""
+    if p["image"]:
+        img_html = f'<div class="post-hero"><img src="{p["image"]}" alt="{p["image_alt"]}"></div>'
+
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -160,6 +179,7 @@ def render_post(p):
     <span class="post-eyebrow">{p['eyebrow']}</span>
     <h1>{p['title']}</h1>
     <div class="post-meta">{formatar_data(p['date'])}</div>
+    {img_html}
     <div class="post-body">
 {p['body_html']}
     </div>
@@ -171,6 +191,43 @@ def render_post(p):
 </body>
 </html>
 """
+
+
+def render_preview_card(p):
+    if p["image"]:
+        thumb = f'<img src="blog/{p["image"]}" alt="{p["image_alt"]}" loading="lazy">'
+    else:
+        thumb = '<div class="preview-thumb-empty"><span>c<span style="color:#E0703E;">.</span></span></div>'
+    return f"""      <a href="blog/{p['slug']}.html" class="preview-card">
+        <div class="preview-thumb">{thumb}</div>
+        <div class="preview-body">
+          <div class="preview-date">{formatar_data(p['date'])}</div>
+          <div class="preview-title">{p['title']}</div>
+          <p class="preview-excerpt">{p['excerpt']}</p>
+        </div>
+      </a>"""
+
+
+def update_home_preview(posts):
+    if not HOME_FILE.exists():
+        print(f"Aviso: {HOME_FILE} não encontrado — pulei a atualização da home.")
+        return
+
+    html = HOME_FILE.read_text(encoding="utf-8")
+    if PREVIEW_START not in html or PREVIEW_END not in html:
+        print("Aviso: marcadores BLOG_PREVIEW_START/END não encontrados no index.html — pulei a atualização da home.")
+        return
+
+    latest = posts[:3]
+    cards_html = "\n".join(render_preview_card(p) for p in latest)
+    novo_bloco = f"{PREVIEW_START}\n{cards_html}\n{PREVIEW_END}"
+
+    before = html.split(PREVIEW_START)[0]
+    after = html.split(PREVIEW_END)[1]
+    novo_html = before + novo_bloco + after
+
+    HOME_FILE.write_text(novo_html, encoding="utf-8")
+    print(f"index.html atualizado com os {len(latest)} post(s) mais recente(s) na home.")
 
 
 def render_sitemap(posts):
@@ -202,8 +259,16 @@ def main():
 
     shutil.copy(STYLE_FILE, OUTPUT_DIR / "style.css")
 
+    if IMAGES_DIR.exists():
+        dest_images = OUTPUT_DIR / "images"
+        if dest_images.exists():
+            shutil.rmtree(dest_images)
+        shutil.copytree(IMAGES_DIR, dest_images)
+
     sitemap_path = SITE_ROOT / "sitemap.xml"
     sitemap_path.write_text(render_sitemap(posts), encoding="utf-8")
+
+    update_home_preview(posts)
 
     print(f"OK — {len(posts)} post(s) gerado(s) em {OUTPUT_DIR}/")
     for p in posts:
