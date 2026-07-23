@@ -1,0 +1,91 @@
+COMO PUBLICAR UM POST NOVO NO BLOG DA CHAPTER
+================================================
+
+1. CRIAR O ARQUIVO
+-------------------
+Dentro de blog-source/posts/, cria um arquivo novo terminado em .md
+O NOME DO ARQUIVO vira a URL do post. Usa palavras-chave, sem espaço,
+sem acento, tudo minúsculo. Exemplo:
+
+  blog-source/posts/como-funciona-uma-auditoria-de-geo.md
+
+
+2. ESCREVER O CABEÇALHO (frontmatter)
+--------------------------------------
+Todo post comeca com isso, entre os dois "---":
+
+---
+title: Título do post
+date: 2026-08-01
+eyebrow: Categoria curta (ex: Método, Sobre o blog, Setor)
+excerpt: Um resumo de 1 a 2 frases. Aparece na listagem e no Google.
+image: images/nome-da-imagem.jpg
+image_alt: Descrição curta da imagem (opcional, se não puser usa o título)
+---
+
+Campos obrigatórios: title, date, excerpt
+Campos opcionais: eyebrow, image, image_alt (se não tiver imagem, so
+apaga essas duas linhas)
+
+
+3. IMAGEM (se for usar)
+-------------------------
+- Local: joga o arquivo dentro de blog-source/images/
+  e usa "image: images/nome-do-arquivo.jpg"
+
+- URL externa (ex: Unsplash): copia o link DIRETO da imagem
+  (clica com botao direito EM CIMA da foto > copiar endereço da imagem,
+  nao o link da pagina) e usa "image: https://..."
+
+
+4. ESCREVER O TEXTO
+---------------------
+Embaixo do segundo "---", escreve em Markdown normal.
+
+- Paragrafo normal: só escreve o texto, pula linha entre paragrafos.
+- Subtitulo: comeca a linha com ## (dois sustenidos + espaço)
+- Negrito: **palavra**
+- Italico: *palavra*
+- Citação com fundo escuro: começa a linha com > (maior que)
+
+  > Frase de destaque aqui vira bloco escuro com borda laranja.
+
+
+5. RODAR O SCRIPT
+-------------------
+Abre o terminal na pasta raiz do repositório (~/Documentos/chapter)
+e roda:
+
+  python3 blog-source/gerar_blog.py
+
+Isso faz TUDO sozinho:
+  - gera a pagina do post novo dentro de blog/
+  - atualiza a listagem em blog/index.html
+  - atualiza o sitemap.xml
+  - atualiza a galeria "Últimas reflexões" na home (os 3 mais recentes)
+
+
+6. CONFERIR ANTES DE SUBIR
+-----------------------------
+Abre blog/index.html no navegador e confere se o post apareceu certo
+(titulo, resumo, imagem, data). Abre o post individual tambem.
+
+
+7. SUBIR PRO GITHUB
+----------------------
+  git add .
+  git commit -m "novo post: titulo do post aqui"
+  git push
+
+Espera uns minutos e confere no site de verdade (chaptercom.com.br).
+
+
+REGRA DE OURO
+---------------
+NUNCA edita nada dentro da pasta blog/ na mão. Ela é gerada sozinha
+pelo script e some/e recriada toda vez que voce roda o comando.
+Só edita arquivos dentro de blog-source/ (o .md do post, o style.css
+se for mexer no visual, ou o gerar_blog.py se for mexer na estrutura).
+
+Se der erro de "ModuleNotFoundError", roda:
+  pip install markdown python-frontmatter --break-system-packages
