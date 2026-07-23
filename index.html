@@ -316,7 +316,10 @@
           <input type="text" name="nome" placeholder="Nome" required>
           <input type="email" name="email" placeholder="E-mail" required>
         </div>
-        <input type="text" name="empresa" placeholder="Empresa">
+        <div class="cta-row-2">
+          <input type="text" name="empresa" placeholder="Empresa">
+          <input type="tel" name="celular" placeholder="Celular" pattern="[0-9()\-\s+]{8,20}" required>
+        </div>
         <textarea name="mensagem" placeholder="Como posso ajudar?" required></textarea>
         <button class="cta-btn" type="submit">Enviar mensagem ↗</button>
         <p class="cta-form-note">Ao enviar, você concorda em ser contatado pela Chapter. Sem compartilhamento com terceiros.</p>
