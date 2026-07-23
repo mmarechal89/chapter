@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chapter.com.br/sitemap.xml
