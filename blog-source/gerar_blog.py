@@ -87,7 +87,7 @@ def render_header(depth_prefix=""):
   <div class="wrap">
     <div class="blog-hero-grid">
       <a href="{depth_prefix}../index.html" class="wordmark">chapter<span class="dot">.</span></a>
-      <div class="blog-hero-tag">Uma narrativa,<br>múltiplos canais.<br>Do humano às LLMs.</div>
+      <div class="blog-hero-tag">Uma narrativa,<br>múltiplos canais.<br><strong>Do humano às LLMs.</strong></div>
     </div>
   </div>
 </header>"""
