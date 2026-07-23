@@ -203,7 +203,11 @@ def render_post(p):
 
 def render_preview_card(p):
     if p["image"]:
-        thumb = f'<img src="blog/{p["image"]}" alt="{p["image_alt"]}" loading="lazy">'
+        if p["image"].startswith("http://") or p["image"].startswith("https://"):
+            src = p["image"]
+        else:
+            src = f'blog/{p["image"]}'
+        thumb = f'<img src="{src}" alt="{p["image_alt"]}" loading="lazy">'
     else:
         thumb = '<div class="preview-thumb-empty"><span>c<span style="color:#E0703E;">.</span></span></div>'
     return f"""      <a href="blog/{p['slug']}.html" class="preview-card">
@@ -215,7 +219,7 @@ def render_preview_card(p):
         </div>
       </a>"""
 
-
+      
 def update_home_preview(posts):
     if not HOME_FILE.exists():
         print(f"Aviso: {HOME_FILE} não encontrado — pulei a atualização da home.")
