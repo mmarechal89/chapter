@@ -1,7 +1,7 @@
 ---
 title: Assessoria de imprensa para aparecer no ChatGPT
-date: 2026-07-28
-eyebrow: Método
+date: 2026-08-10
+eyebrow: Assessoria para ChatGPT
 excerpt: A maioria das assessorias usa IA como ferramenta interna. Poucas pensam em imprensa como o caminho pra sua marca ser citada quando alguém pergunta pra uma IA. A diferença entre as duas está toda no objetivo.
 image: https://images.unsplash.com/photo-1677691820099-a6e8040aa077?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 image_alt: Imagem de capa do ChatGPT
