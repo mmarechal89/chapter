@@ -120,21 +120,70 @@
   h1.wordmark{ margin:0; }
 
   /* ============ HEADER ============ */
-  header.hero{ background:var(--bg-dark); padding:104px 0 84px; position:relative; }
-  .hero-nav{
-    position:absolute; top:36px; right:56px; font-size:14px; color:var(--paper-soft);
-    text-decoration:none; font-weight:500;
+  header.hero{ background:var(--bg-dark); padding:0; position:relative; overflow:hidden; }
+
+  .hero-glow{
+    position:absolute; left:-14rem; top:-10rem; width:42rem; height:42rem; border-radius:50%;
+    background:radial-gradient(circle, var(--terracota) 0%, transparent 70%);
+    opacity:0.22; filter:blur(120px); pointer-events:none;
   }
-  .hero-nav:hover{ color:var(--terracota-bright); }
+
+  .hero-nav-bar{
+    position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between;
+    gap:16px; padding-top:28px;
+  }
+  .hero-nav-brand{ font-family:var(--wordmark); font-weight:800; font-size:23px; letter-spacing:-0.01em; color:var(--paper); text-decoration:none; }
+  .hero-nav-pills{
+    display:flex; align-items:center; gap:2px; background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-dark); border-radius:999px; padding:6px;
+  }
+  .hero-nav-pills a{
+    font-size:14px; color:var(--paper-soft); text-decoration:none; padding:8px 16px; border-radius:999px;
+    white-space:nowrap; transition:background 0.15s ease, color 0.15s ease;
+  }
+  .hero-nav-pills a:hover{ background:rgba(255,255,255,0.08); color:var(--paper); }
+  .hero-cta-btn{
+    font-size:14px; font-weight:600; color:var(--bg-dark); background:var(--terracota-bright);
+    padding:11px 20px; border-radius:999px; text-decoration:none; white-space:nowrap;
+    transition:background 0.15s ease;
+  }
+  .hero-cta-btn:hover{ background:var(--terracota); }
+
+  .hero-content{ position:relative; z-index:1; padding-top:96px; }
+  .eyebrow{
+    font-size:13px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--terracota-bright); display:block; margin-bottom:20px;
+  }
+  .hero-wordmark{ font-size:clamp(64px, 11vw, 132px); line-height:0.92; color:var(--paper); margin:0 0 44px; }
+
   .hero-grid{
     display:grid; grid-template-columns:1.15fr 1fr; gap:40px; align-items:end;
-    padding-bottom:52px; border-bottom:1px solid var(--line-dark);
+    padding-top:36px; border-top:1px solid var(--line-dark);
   }
-  .hero .wordmark{ font-size:clamp(78px, 10.8vw, 129px); line-height:0.92; color:var(--paper); }
-  .hero-tag{
-    font-family:var(--display); font-weight:500; font-size:23px; line-height:1.5;
-    color:var(--paper-soft); text-align:right; padding-bottom:8px;
+  .hero-grid .hero-tag{
+    font-family:var(--display); font-weight:600; font-size:clamp(24px,3.2vw,34px);
+    line-height:1.35; color:var(--paper); text-align:left; padding-bottom:0;
   }
+  .hero-side-text{ font-size:16px; line-height:1.7; color:var(--paper-soft); max-width:360px; }
+  .hero-scroll-link{
+    display:inline-flex; margin-top:20px; font-size:14px; color:var(--paper);
+    border-bottom:1px solid var(--line-dark); padding-bottom:4px; text-decoration:none;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  .hero-scroll-link:hover{ border-color:var(--terracota-bright); color:var(--terracota-bright); }
+
+  .hero-marquee{
+    position:relative; z-index:1; margin-top:64px; overflow:hidden;
+    border-top:1px solid var(--line-dark); padding:18px 0;
+  }
+  .hero-marquee-track{ display:flex; width:max-content; gap:40px; animation:marquee 28s linear infinite; }
+  .hero-marquee-track span{
+    display:flex; align-items:center; gap:40px; white-space:nowrap;
+    font-size:13px; text-transform:uppercase; letter-spacing:0.16em; color:var(--paper-soft);
+  }
+  .hero-marquee-track i{ display:inline-block; width:4px; height:4px; background:var(--terracota-bright); border-radius:50%; }
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){ .hero-marquee-track{ animation:none; } }
 
   /* ============ VALUE + STATS ============ */
   section.value{ padding:80px 0 96px; }
@@ -174,24 +223,34 @@
     font-family:var(--display); font-weight:700; font-size:clamp(30px, 3.6vw, 36px);
     letter-spacing:-0.01em; max-width:560px; margin-bottom:52px;
   }
-  .chapters{ display:flex; flex-direction:column; gap:20px; }
+  h2.sec-title .em{ font-style:italic; font-weight:500; }
+
+  .chapters-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
   .chapter-card{
-    display:grid; grid-template-columns:200px 1fr; border:1px solid var(--line); border-radius:10px; overflow:hidden;
-    transition:transform 0.25s ease, border-color 0.25s ease;
+    position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:space-between;
+    background:var(--bg-alt); border:1px solid var(--line); border-radius:8px;
+    padding:44px 36px; transition:transform 0.4s ease, border-color 0.4s ease;
   }
   .chapter-card:hover{ transform:translateY(-4px); border-color:var(--terracota); }
-  .chapter-side{ padding:30px 26px; display:flex; flex-direction:column; justify-content:center; }
-  .chapter-side .num{ font-family:var(--display); font-weight:800; font-size:15.5px; letter-spacing:0.05em; text-transform:uppercase; }
-  .chapter-side .name{ font-family:var(--display); font-weight:600; font-style:italic; font-size:23px; margin-top:6px; }
-  .chapter-body{ padding:30px 34px; background:var(--bg-light); }
-  .chapter-body .lead{ font-family:var(--display); font-weight:700; font-size:20px; color:var(--ink); margin-bottom:10px; line-height:1.5; }
-  .chapter-body .desc{ font-size:17.5px; line-height:1.75; color:var(--ink-soft); }
-  .chapter-body .terms{ font-weight:700; color:var(--terracota); }
-
-  .chapter-card.ch1 .chapter-side{ background:var(--terracota); color:#fff; }
-  .chapter-card.ch2 .chapter-side, .chapter-card.ch3 .chapter-side{ background:var(--slate-deep); color:var(--paper); }
-  .chapter-card.ch1 .chapter-side .num{ color:rgba(255,255,255,0.75); }
-  .chapter-card.ch2 .chapter-side .num, .chapter-card.ch3 .chapter-side .num{ color:var(--paper-soft); }
+  .chapter-ghost{
+    position:absolute; top:-20px; right:-8px; z-index:0; pointer-events:none; user-select:none;
+    font-family:var(--display); font-weight:800; font-size:9rem; line-height:1;
+    color:var(--terracota); opacity:0.09; transition:transform 0.6s ease;
+  }
+  .chapter-card:hover .chapter-ghost{ transform:translateY(-8px); }
+  .chapter-top, .chapter-bottom{ position:relative; z-index:1; }
+  .chapter-num{
+    font-size:13px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase;
+    color:var(--terracota); display:block;
+  }
+  .chapter-title{
+    font-family:var(--display); font-weight:700; font-size:28px; letter-spacing:-0.01em;
+    color:var(--ink); margin-top:14px;
+  }
+  .chapter-lead{ font-size:16.5px; line-height:1.7; color:var(--ink-soft); margin-top:14px; max-width:340px; }
+  .chapter-bottom{ margin-top:40px; border-top:1px solid var(--line); padding-top:20px; }
+  .chapter-desc{ font-size:14px; line-height:1.75; color:var(--ink-muted); }
+  .chapter-desc strong{ color:var(--ink); font-weight:700; }
 
   /* ============ NARRATIVA ============ */
   section.narrativa{ background:var(--bg-alt); padding:104px 0 88px; }
@@ -303,11 +362,12 @@
 
   /* ============ RESPONSIVE ============ */
   @media (max-width:860px){
-    .hero-nav{ top:24px; right:24px; font-size:13px; }
     .wrap{ padding:0 28px; }
-    header.hero{ padding:64px 0 56px; }
-    .hero-grid{ grid-template-columns:1fr; gap:22px; padding-bottom:36px; }
-    .hero-tag{ text-align:left; }
+    .hero-nav-bar{ flex-wrap:wrap; padding-top:20px; }
+    .hero-nav-pills{ order:3; width:100%; justify-content:flex-start; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    .hero-nav-pills::-webkit-scrollbar{ display:none; }
+    .hero-content{ padding-top:56px; }
+    .hero-grid{ grid-template-columns:1fr; gap:22px; }
     section.value{ padding:56px 0 64px; }
     .value-sub{ margin-bottom:44px; }
     .stat-row{ grid-template-columns:1fr; gap:28px; }
@@ -315,8 +375,9 @@
     .stat:first-child{ border-top:none; padding-top:0; }
     section.problema, section.servicos, section.cta, section.posts-preview{ padding:64px 0; }
     .posts-preview-grid{ grid-template-columns:1fr; }
-    .chapter-card{ grid-template-columns:1fr; }
-    .chapter-side{ padding:20px 26px; }
+    .chapters-grid{ grid-template-columns:1fr; }
+    .chapter-card{ padding:32px 26px; }
+    .chapter-ghost{ font-size:6rem; top:-10px; right:-4px; }
     section.narrativa{ padding:64px 0 48px; }
     .cta-split{ grid-template-columns:1fr; gap:28px; }
     .cta-row-2{ grid-template-columns:1fr; }
@@ -326,11 +387,37 @@
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap">
+<header class="hero" id="topo">
+  <div aria-hidden class="hero-glow"></div>
+
+  <div class="wrap hero-nav-bar">
+    <a class="hero-nav-brand wordmark" href="#topo">chapter<span class="dot">.</span></a>
+    <nav class="hero-nav-pills">
+      <a href="#problema">Por que agora</a>
+      <a href="#servicos">Como funciona</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#notas">Notas</a>
+    </nav>
+    <a class="hero-cta-btn" href="#cta">Falar com a chapter ↗</a>
+  </div>
+
+  <div class="wrap hero-content">
+    <span class="eyebrow">Comunicação para uma nova era</span>
+    <h1 class="wordmark hero-wordmark">chapter<span class="dot">.</span><span class="sr-only"> — Consultoria de narrativa e posicionamento em LLMs</span></h1>
+
     <div class="hero-grid">
-      <h1 class="wordmark">chapter<span class="dot">.</span><span class="sr-only"> — Consultoria de narrativa e posicionamento em LLMs</span></h1>
-      <div class="hero-tag">Uma narrativa,<br>múltiplos canais.<br><strong>Comunicação que gera negócios.</strong></div>
+      <p class="hero-tag">Uma narrativa,<br>múltiplos canais.<br><strong>Comunicação que gera negócios.</strong></p>
+      <div class="hero-side">
+        <p class="hero-side-text">Consultoria de comunicação que costura imprensa, conteúdo e posicionamento em uma narrativa única para gerar autoridade e consistência.</p>
+        <a href="#servicos" class="hero-scroll-link">Como o trabalho acontece ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="hero-marquee-track">
+      <span>Assessoria de imprensa<i></i>Conteúdo<i></i>Liderança<i></i>Narrativa corporativa<i></i>Imprensa Tier 1<i></i>Mensagens-chave<i></i>Autoridade executiva<i></i></span>
+      <span>Assessoria de imprensa<i></i>Conteúdo<i></i>Liderança<i></i>Narrativa corporativa<i></i>Imprensa Tier 1<i></i>Mensagens-chave<i></i>Autoridade executiva<i></i></span>
     </div>
   </div>
 </header>
@@ -355,59 +442,59 @@
   </div>
 </section>
 
-<section class="problema">
+<section class="problema" id="problema">
   <div class="wrap">
     <span class="problema-eyebrow">Por que agora</span>
     <p class="problema-head reveal">A imprensa <span class="it">é a principal fonte</span> de informações para executivos e LLMs. </br><strong>A mídia muda, a estratégia prevalece.</strong></p>
   </div>
 </section>
 
-<section class="servicos">
+<section class="servicos" id="servicos">
   <div class="wrap">
     <span class="sec-eyebrow">Como o trabalho acontece</span>
-    <h2 class="sec-title">Uma narrativa em capítulos.</h2>
+    <h2 class="sec-title">Uma narrativa <span class="em">em capítulos.</span></h2>
 
-    <div class="chapters">
-      <div class="chapter-card ch1 reveal">
-        <div class="chapter-side">
-          <div class="num">Capítulo 1</div>
-          <div class="name">IMPRENSA</div>
+    <div class="chapters-grid">
+      <article class="chapter-card reveal">
+        <span class="chapter-ghost" aria-hidden="true">1</span>
+        <div class="chapter-top">
+          <span class="chapter-num">Capítulo 1</span>
+          <h3 class="chapter-title">Imprensa</h3>
+          <p class="chapter-lead">Consultoria narrativa e relacionamento qualificado com os maiores veículos de comunicação do Brasil.</p>
         </div>
-        <div class="chapter-body">
-          <p class="lead">Consultoria narrativa e relacionamento qualificado com os maiores veículos de comunicação do Brasil.</p>
-          <p class="desc">Entregável: narrativa unificada da empresa, mensagens-chave, pautas e publicações em canais qualificados.</p>
+        <div class="chapter-bottom">
+          <p class="chapter-desc"><strong>Entregável:</strong> narrativa unificada da empresa, mensagens-chave, pautas e publicações em canais qualificados.</p>
         </div>
-        
-      </div>
-    <div class="chapters">
-      <div class="chapter-card ch2 reveal">
-        <div class="chapter-side">
-          <div class="num">Capítulo 2</div>
-          <div class="name">LIDERANÇA</div>
+      </article>
+
+      <article class="chapter-card reveal">
+        <span class="chapter-ghost" aria-hidden="true">2</span>
+        <div class="chapter-top">
+          <span class="chapter-num">Capítulo 2</span>
+          <h3 class="chapter-title">Liderança</h3>
+          <p class="chapter-lead">Consultoria de comunicação para líderes e construção de autoridade.</p>
         </div>
-        <div class="chapter-body">
-          <p class="lead">Consultoria de comunicação para líderes e construção de autoridade.</p>
-          <p class="desc">Entregável: Diagnóstico de posicionamento, gestão de redes sociais corporativas, oportunidades de fala e treinamentos.</p>
+        <div class="chapter-bottom">
+          <p class="chapter-desc"><strong>Entregável:</strong> diagnóstico de posicionamento, gestão de redes sociais corporativas, oportunidades de fala e treinamentos.</p>
         </div>
-        
-      </div>
-    <div class="chapters">
-      <div class="chapter-card ch2 reveal">
-        <div class="chapter-side">
-          <div class="num">Capítulo 3</div>
-          <div class="name">CONTEÚDO</div>
+      </article>
+
+      <article class="chapter-card reveal">
+        <span class="chapter-ghost" aria-hidden="true">3</span>
+        <div class="chapter-top">
+          <span class="chapter-num">Capítulo 3</span>
+          <h3 class="chapter-title">Conteúdo</h3>
+          <p class="chapter-lead">Conteúdo institucional e editorial para empresas que lideram.</p>
         </div>
-        <div class="chapter-body">
-          <p class="lead">Conteúdo institucional e editorial para empresas que lideram.</p>
-          <p class="desc">Entregável: brandjournalism, blogs, redes sociais e roteiros audiovisuais.</p>
+        <div class="chapter-bottom">
+          <p class="chapter-desc"><strong>Entregável:</strong> brandjournalism, blogs, redes sociais e roteiros audiovisuais.</p>
         </div>
-        
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="narrativa">
+<section class="narrativa" id="manifesto">
 
 
   <div class="wrap">
@@ -420,7 +507,7 @@
   </div>
 </section>
 
-<section class="posts-preview">
+<section class="posts-preview" id="notas">
   <div class="wrap">
     <div class="posts-preview-head">
       <div>
@@ -460,7 +547,7 @@
   </div>
 </section>
 
-<section class="cta">
+<section class="cta" id="cta">
   <div class="wrap">
     <h2 class="cta-head">Uma boa história começa pelo primeiro capítulo<span class="dot">.</span></h2>
     <div class="cta-rot">
